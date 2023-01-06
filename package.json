@@ -1,0 +1,28 @@
+{
+	"name": "mortgage-calculator",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mahiv87/mortgage-calculator.git"
+	},
+	"keywords": [],
+	"author": "Marcus Herrera",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/mahiv87/mortgage-calculator/issues"
+	},
+	"homepage": "https://github.com/mahiv87/mortgage-calculator#readme",
+	"devDependencies": {
+		"@types/inquirer": "^9.0.3",
+		"typescript": "^4.9.4"
+	},
+	"dependencies": {
+		"inquirer": "^9.1.4"
+	}
+}
