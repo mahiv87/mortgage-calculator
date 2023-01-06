@@ -1,5 +1,12 @@
 import inquirer from 'inquirer';
 
+// interface for Inquirer prompt response
+interface MortageResponse {
+	principal: string;
+	apr: string;
+	term: string;
+}
+
 // Array of questions from Inquirer prompt
 const questions = [
 	{
