@@ -1,5 +1,6 @@
 import inquirer from 'inquirer';
 
+// Array of questions from Inquirer prompt
 const questions = [
 	{
 		type: 'input',
@@ -17,3 +18,14 @@ const questions = [
 		message: 'How long is the loan term (years)?'
 	}
 ];
+
+const mortgageQuestions = (): string => {
+	inquirer.prompt(questions).then((responses) => {
+		console.log(responses);
+	});
+
+	return 'Questions';
+};
+
+// initiate app
+mortgageQuestions();
