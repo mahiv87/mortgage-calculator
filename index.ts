@@ -1,4 +1,5 @@
 import inquirer from 'inquirer';
+import chalk from 'chalk';
 
 // interface for Inquirer prompt response
 interface MortgageResponse {
@@ -46,7 +47,9 @@ const calculateMortgage = (data: MortgageResponse): string => {
 	const mortgage: string = `$${mortgageFormula.toFixed(2)}`;
 
 	console.log(
-		`==================== \n Mortgage: ${mortgage} \n====================`
+		`==================== \n ${chalk.bold('Mortgage:')} ${chalk.green(
+			mortgage
+		)} \n====================`
 	);
 
 	return `Mortgage: ${mortgage}`;

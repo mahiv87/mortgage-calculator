@@ -1,4 +1,5 @@
 import inquirer from 'inquirer';
+import chalk from 'chalk';
 // Array of questions from Inquirer prompt
 const questions = [
     {
@@ -29,8 +30,9 @@ const calculateMortgage = (data) => {
     const mortgageFormula = (principal * (rate * Math.pow(1 + rate, numOfPayments))) /
         Math.pow(1 + rate, numOfPayments) -
         1;
+    // Format the mortgage as USD
     const mortgage = `$${mortgageFormula.toFixed(2)}`;
-    console.log(`========== \n Mortgage: ${mortgage} \n==========`);
+    console.log(`==================== \n ${chalk.bold('Mortgage:')} ${chalk.green(mortgage)} \n====================`);
     return `Mortgage: ${mortgage}`;
 };
 // Function to ask question, and pass data to calculateMortgage()
