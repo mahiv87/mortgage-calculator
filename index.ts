@@ -45,7 +45,10 @@ const calculateBalance = (
 };
 
 // Print payment schedule
-const paymentSchedule = (principal: number, apr: number, term: number) => {
+const paymentSchedule = (data: MortgageResponse) => {
+	let principal: number = Number(data.principal);
+	let apr: number = Number(data.apr);
+	let term: number = Number(data.term);
 	console.log('====================================');
 	console.log('PAYMENT SCHEDULE');
 	console.log('====================================');
@@ -73,31 +76,23 @@ const calculateMortgage = (data: MortgageResponse): string => {
 
 	// Format the mortgage as USD
 	const mortgage: string = `$${mortgageFormula.toFixed(2)}`;
-
-	console.log(
-		`==================== \n ${chalk.bold('Mortgage:')} ${chalk.green(
-			mortgage
-		)} \n====================`
-	);
+	console.log('====================================');
+	console.log(`${chalk.bold('MORTGAGE: ')} ${chalk.green(mortgage)}`);
+	console.log('====================================');
 
 	return `Mortgage: ${mortgage}`;
-
-	paymentSchedule(principal, apr, term);
 };
 
 // Function to ask question, and pass data to calculateMortgage()
 const mortgageQuestions = (): string => {
-	console.log(
-		chalk.bgGreen(`
-	                           
-	MORTGAGE CALCULATOR        
-                                   
-`)
-	);
+	console.log('====================================');
+	console.log('MORTGAGE CALCULATOR');
+	console.log('====================================');
 
 	inquirer.prompt(questions).then((responses: MortgageResponse) => {
 		// console.log(responses);
 		calculateMortgage(responses);
+		paymentSchedule(responses);
 	});
 
 	return 'Questions';
