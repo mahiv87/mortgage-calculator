@@ -42,9 +42,12 @@ const calculateMortgage = (data: MortgageResponse): string => {
 			Math.pow(1 + rate, numOfPayments) -
 		1;
 
-	const mortgage: string = mortgageFormula.toFixed(2);
+	// Format the mortgage as USD
+	const mortgage: string = `$${mortgageFormula.toFixed(2)}`;
 
-	console.log(`Mortgage: ${mortgage}`);
+	console.log(
+		`==================== \n Mortgage: ${mortgage} \n====================`
+	);
 
 	return `Mortgage: ${mortgage}`;
 };

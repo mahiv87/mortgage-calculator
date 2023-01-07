@@ -29,8 +29,8 @@ const calculateMortgage = (data) => {
     const mortgageFormula = (principal * (rate * Math.pow(1 + rate, numOfPayments))) /
         Math.pow(1 + rate, numOfPayments) -
         1;
-    const mortgage = mortgageFormula.toFixed(2);
-    console.log(`Mortgage: ${mortgage}`);
+    const mortgage = `$${mortgageFormula.toFixed(2)}`;
+    console.log(`========== \n Mortgage: ${mortgage} \n==========`);
     return `Mortgage: ${mortgage}`;
 };
 // Function to ask question, and pass data to calculateMortgage()
