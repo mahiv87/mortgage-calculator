@@ -27,11 +27,11 @@ A simple CLI app to calculate a mortgage
 
 ## Installation
 
-Simple clone the repository. Navigate to the root directory, and run `npm install` in the terminal
+Simply clone the repository. Navigate to the root directory, and run `npm install` in the terminal
 
 ## Usage
 
-Type `npm run start` in the terminal to start the app. Then answer the prompts about the loan
+Run `npm run start` in the terminal to start the app. Then answer the prompts about the loan
 
 ## License
 
