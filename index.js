@@ -26,7 +26,7 @@ const calculateBalance = (principal, apr, term, i) => {
         (Math.pow(1 + rate, numOfPayments) - 1);
     return balance;
 };
-// Print payment schedule
+// Displays payment schedule
 const paymentSchedule = (data) => {
     let principal = Number(data.principal);
     let apr = Number(data.apr);
@@ -36,7 +36,7 @@ const paymentSchedule = (data) => {
     console.log('====================================');
     for (let i = 1; i <= term * 12; i++) {
         const balance = calculateBalance(principal, apr, term, i);
-        console.log(`$${balance.toFixed(2)}`);
+        console.log(`${i}/${term * 12} - $${balance.toFixed(2)}`);
     }
 };
 // This function right here will calculate the mortgage
