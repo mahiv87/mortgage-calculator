@@ -18,7 +18,14 @@ const questions = [
     }
 ];
 // This function right here will calculate the mortgage
-const calculateMortgage = (data) => data.principal;
+const calculateMortgage = (data) => {
+    let principal = Number(data.principal);
+    let apr = Number(data.apr);
+    let term = Number(data.term);
+    let rate = apr / 100 / 12;
+    console.log(rate);
+    return 'Mortgage payment: ';
+};
 // Function to ask question, and pass data to calculateMortgage()
 const mortgageQuestions = () => {
     inquirer.prompt(questions).then((responses) => {
