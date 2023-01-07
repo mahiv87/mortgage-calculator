@@ -34,6 +34,8 @@ const calculateMortgage = (data: MortgageResponse): string => {
 
 	// Monthly interest rate
 	let rate: number = apr / 100 / 12;
+	// Total number of payments to be made
+	let numOfPayments: number = term * 12;
 
 	return 'Mortgage payment: ';
 };

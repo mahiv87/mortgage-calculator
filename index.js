@@ -22,8 +22,11 @@ const calculateMortgage = (data) => {
     let principal = Number(data.principal);
     let apr = Number(data.apr);
     let term = Number(data.term);
+    // Monthly interest rate
     let rate = apr / 100 / 12;
-    console.log(rate);
+    // Total number of payments to be made
+    let numOfPayments = term * 12;
+    console.log('👻 ~ file: index.ts:39 ~ calculateMortgage ~ numOfPayments', numOfPayments);
     return 'Mortgage payment: ';
 };
 // Function to ask question, and pass data to calculateMortgage()
