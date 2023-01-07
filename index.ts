@@ -27,7 +27,13 @@ const questions = [
 ];
 
 // This function right here will calculate the mortgage
-const calculateMortgage = (data: MortgageResponse): string => data.principal;
+const calculateMortgage = (data: MortgageResponse): string => {
+	let principal: number = Number(data.principal);
+	let apr: number = Number(data.apr);
+	let term: number = Number(data.term);
+
+	return 'Mortgage payment: ';
+};
 
 // Function to ask question, and pass data to calculateMortgage()
 const mortgageQuestions = (): string => {
