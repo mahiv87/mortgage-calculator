@@ -38,10 +38,9 @@ const calculateMortgage = (data: MortgageResponse): string => {
 	let numOfPayments: number = term * 12;
 
 	const mortgageFormula: number =
-		principal *
-		((rate * Math.pow(1 + rate, numOfPayments)) /
+		(principal * (rate * Math.pow(1 + rate, numOfPayments))) /
 			Math.pow(1 + rate, numOfPayments) -
-			1);
+		1;
 
 	const mortgage: string = mortgageFormula.toFixed(2);
 

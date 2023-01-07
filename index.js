@@ -26,10 +26,9 @@ const calculateMortgage = (data) => {
     let rate = apr / 100 / 12;
     // Total number of payments to be made
     let numOfPayments = term * 12;
-    const mortgageFormula = principal *
-        ((rate * Math.pow(1 + rate, numOfPayments)) /
-            Math.pow(1 + rate, numOfPayments) -
-            1);
+    const mortgageFormula = (principal * (rate * Math.pow(1 + rate, numOfPayments))) /
+        Math.pow(1 + rate, numOfPayments) -
+        1;
     const mortgage = mortgageFormula.toFixed(2);
     console.log(`Mortgage: ${mortgage}`);
     return `Mortgage: ${mortgage}`;
