@@ -20,7 +20,10 @@ A simple CLI app to calculate a mortgage
 ## Technologies
 
 - JavaScript
+- TypeScript
 - Node.js
+- Inquirer
+- Chalk
 
 ## Installation
 
