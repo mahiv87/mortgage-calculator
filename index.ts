@@ -1,5 +1,6 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
+import 'console.table';
 
 // interface for Inquirer prompt response
 interface MortgageResponse {
@@ -45,17 +46,28 @@ const calculateBalance = (
 };
 
 // Displays payment schedule
-const paymentSchedule = (data: MortgageResponse) => {
+const paymentSchedule = (data: MortgageResponse): string => {
 	let principal: number = Number(data.principal);
 	let apr: number = Number(data.apr);
 	let term: number = Number(data.term);
+
+	// Array to hold payment schedule data
+	let schedule: { PAYMENT: string; BALANCE: string }[] = [];
+
 	console.log('====================================');
 	console.log('PAYMENT SCHEDULE');
 	console.log('====================================');
 	for (let i = 1; i <= term * 12; i++) {
 		const balance: number = calculateBalance(principal, apr, term, i);
-		console.log(`${i}/${term * 12} - $${balance.toFixed(2)}`);
+		schedule.push({
+			PAYMENT: `${i}/${term * 12}`,
+			BALANCE: `$${balance.toFixed(2)}`
+		});
 	}
+
+	// Format payment schedule into a table
+	console.table([...schedule]);
+	return `Payment Schedule`;
 };
 
 // This function right here will calculate the mortgage
