@@ -33,14 +33,24 @@ const calculateBalance = (
 	apr: number,
 	term: number,
 	i: number
-) => {
-	console.log('balance');
+): number => {
+	let rate: number = apr / 100 / 12;
+	let numOfPayments: number = term * 12;
+
+	const balance: number =
+		(principal * (Math.pow(1 + rate, numOfPayments) - Math.pow(1 + rate, i))) /
+		(Math.pow(1 + rate, numOfPayments) - 1);
+
+	return balance;
 };
 
 // Print payment schedule
 const paymentSchedule = (principal: number, apr: number, term: number) => {
+	console.log('====================================');
+	console.log('PAYMENT SCHEDULE');
+	console.log('====================================');
 	for (let i = 1; i <= term * 12; i++) {
-		const balance = calculateBalance(principal, apr, term, i);
+		const balance: number = calculateBalance(principal, apr, term, i);
 		console.log(`$${balance.toFixed(2)}`);
 	}
 };
@@ -80,7 +90,7 @@ const mortgageQuestions = (): string => {
 	console.log(
 		chalk.bgGreen(`
 	                           
-	Mortgage Calculator        
+	MORTGAGE CALCULATOR        
                                    
 `)
 	);
