@@ -26,8 +26,12 @@ const calculateMortgage = (data) => {
     let rate = apr / 100 / 12;
     // Total number of payments to be made
     let numOfPayments = term * 12;
-    console.log('👻 ~ file: index.ts:39 ~ calculateMortgage ~ numOfPayments', numOfPayments);
-    return 'Mortgage payment: ';
+    const mortgage = principal *
+        ((rate * Math.pow(1 + rate, numOfPayments)) /
+            Math.pow(1 + rate, numOfPayments) -
+            1);
+    console.log(`Mortgage: ${mortgage}`);
+    return `Mortgage: ${mortgage}`;
 };
 // Function to ask question, and pass data to calculateMortgage()
 const mortgageQuestions = () => {
