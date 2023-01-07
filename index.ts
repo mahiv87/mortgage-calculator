@@ -88,8 +88,9 @@ const calculateMortgage = (data: MortgageResponse): string => {
 	// Format the mortgage as USD
 	const mortgage: string = `$${mortgageFormula.toFixed(2)}`;
 	console.log('\n====================================');
-	console.log(`${chalk('MORTGAGE: ')} ${chalk.green(mortgage)}`);
-	console.log('====================================\n');
+	console.log(`${chalk.cyan('MORTGAGE')}`);
+	console.log('====================================');
+	console.log(`Monthly Payment: ${chalk.green(mortgage)}\n`);
 
 	return `Mortgage: ${mortgage}`;
 };

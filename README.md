@@ -15,7 +15,8 @@
 
 ## Description
 
-A simple CLI app to calculate a mortgage
+A simple CLI app to calculate a mortgage, and payment schedule.
+![screenshot of mortgage-calculator](./assets/mortgage-calculator.png)
 
 ## Technologies
 

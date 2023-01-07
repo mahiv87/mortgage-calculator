@@ -62,8 +62,9 @@ const calculateMortgage = (data) => {
     // Format the mortgage as USD
     const mortgage = `$${mortgageFormula.toFixed(2)}`;
     console.log('\n====================================');
-    console.log(`${chalk('MORTGAGE: ')} ${chalk.green(mortgage)}`);
-    console.log('====================================\n');
+    console.log(`${chalk.cyan('MORTGAGE')}`);
+    console.log('====================================');
+    console.log(`Monthly Payment: ${chalk.green(mortgage)}\n`);
     return `Mortgage: ${mortgage}`;
 };
 // Function to ask question, and pass data to calculateMortgage()
