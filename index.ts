@@ -27,6 +27,24 @@ const questions = [
 	}
 ];
 
+// Calculate the remaining balance
+const calculateBalance = (
+	principal: number,
+	apr: number,
+	term: number,
+	i: number
+) => {
+	console.log('balance');
+};
+
+// Print payment schedule
+const paymentSchedule = (principal: number, apr: number, term: number) => {
+	for (let i = 1; i <= term * 12; i++) {
+		const balance = calculateBalance(principal, apr, term, i);
+		console.log(`$${balance.toFixed(2)}`);
+	}
+};
+
 // This function right here will calculate the mortgage
 const calculateMortgage = (data: MortgageResponse): string => {
 	let principal: number = Number(data.principal);
@@ -53,6 +71,8 @@ const calculateMortgage = (data: MortgageResponse): string => {
 	);
 
 	return `Mortgage: ${mortgage}`;
+
+	paymentSchedule(principal, apr, term);
 };
 
 // Function to ask question, and pass data to calculateMortgage()
