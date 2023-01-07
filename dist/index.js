@@ -58,8 +58,7 @@ const calculateMortgage = (data) => {
     // Total number of payments to be made
     let numOfPayments = term * 12;
     const mortgageFormula = (principal * (rate * Math.pow(1 + rate, numOfPayments))) /
-        Math.pow(1 + rate, numOfPayments) -
-        1;
+        (Math.pow(1 + rate, numOfPayments) - 1);
     // Format the mortgage as USD
     const mortgage = `$${mortgageFormula.toFixed(2)}`;
     console.log('\n====================================');

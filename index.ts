@@ -83,8 +83,7 @@ const calculateMortgage = (data: MortgageResponse): string => {
 
 	const mortgageFormula: number =
 		(principal * (rate * Math.pow(1 + rate, numOfPayments))) /
-			Math.pow(1 + rate, numOfPayments) -
-		1;
+		(Math.pow(1 + rate, numOfPayments) - 1);
 
 	// Format the mortgage as USD
 	const mortgage: string = `$${mortgageFormula.toFixed(2)}`;
