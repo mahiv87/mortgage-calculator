@@ -9,7 +9,7 @@ interface MortgageResponse {
 	term: string;
 }
 
-// Array of questions from Inquirer prompt
+// Array of questions for Inquirer prompt
 const questions = [
 	{
 		type: 'input',
@@ -55,13 +55,13 @@ const paymentSchedule = (data: MortgageResponse): string => {
 	let schedule: { PAYMENT: string; BALANCE: string }[] = [];
 
 	console.log('====================================');
-	console.log('PAYMENT SCHEDULE');
-	console.log('====================================');
+	console.log(chalk.cyan('PAYMENT SCHEDULE'));
+	console.log('====================================\n');
 	for (let i = 1; i <= term * 12; i++) {
 		const balance: number = calculateBalance(principal, apr, term, i);
 		schedule.push({
 			PAYMENT: `${i}/${term * 12}`,
-			BALANCE: `$${balance.toFixed(2)}`
+			BALANCE: chalk.green(`$${balance.toFixed(2)}`)
 		});
 	}
 
@@ -88,9 +88,9 @@ const calculateMortgage = (data: MortgageResponse): string => {
 
 	// Format the mortgage as USD
 	const mortgage: string = `$${mortgageFormula.toFixed(2)}`;
-	console.log('====================================');
-	console.log(`${chalk.bold('MORTGAGE: ')} ${chalk.green(mortgage)}`);
-	console.log('====================================');
+	console.log('\n====================================');
+	console.log(`${chalk('MORTGAGE: ')} ${chalk.green(mortgage)}`);
+	console.log('====================================\n');
 
 	return `Mortgage: ${mortgage}`;
 };
@@ -98,7 +98,7 @@ const calculateMortgage = (data: MortgageResponse): string => {
 // Function to ask question, and pass data to calculateMortgage()
 const mortgageQuestions = (): string => {
 	console.log('====================================');
-	console.log('MORTGAGE CALCULATOR');
+	console.log(chalk.cyan('MORTGAGE CALCULATOR'));
 	console.log('====================================');
 
 	inquirer.prompt(questions).then((responses: MortgageResponse) => {
