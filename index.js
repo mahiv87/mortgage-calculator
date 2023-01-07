@@ -37,6 +37,11 @@ const calculateMortgage = (data) => {
 };
 // Function to ask question, and pass data to calculateMortgage()
 const mortgageQuestions = () => {
+    console.log(chalk.bgGreen(`
+	                           
+	Mortgage Calculator        
+                                   
+`));
     inquirer.prompt(questions).then((responses) => {
         // console.log(responses);
         calculateMortgage(responses);
