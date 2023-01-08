@@ -1,12 +1,3 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import 'console.table';
@@ -29,6 +20,7 @@ const questions = [
         message: 'How long is the loan term (years)?'
     }
 ];
+// Exports payment schedule to a spreadsheet file
 const excelExport = (exportData) => {
     const workSheetColumnNames = ['PAYMENT', 'BALANCE'];
     const workSheetName = 'Payment Schedule';
@@ -44,7 +36,7 @@ const calculateBalance = (principal, apr, term, i) => {
     return balance;
 };
 // Displays payment schedule
-const paymentSchedule = (data) => __awaiter(void 0, void 0, void 0, function* () {
+const paymentSchedule = (data) => {
     let principal = Number(data.principal);
     let apr = Number(data.apr);
     let term = Number(data.term);
@@ -67,9 +59,10 @@ const paymentSchedule = (data) => __awaiter(void 0, void 0, void 0, function* ()
     }
     // Format payment schedule into a table
     console.table([...schedule]);
+    // Send payment schedule for export
     excelExport(exportData);
     return `Payment Schedule`;
-});
+};
 // This function right here will calculate the mortgage
 const calculateMortgage = (data) => {
     let principal = Number(data.principal);

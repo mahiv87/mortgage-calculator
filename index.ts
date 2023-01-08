@@ -62,7 +62,7 @@ const calculateBalance = (
 };
 
 // Displays payment schedule
-const paymentSchedule = async (data: MortgageResponse) => {
+const paymentSchedule = (data: MortgageResponse): string => {
 	let principal: number = Number(data.principal);
 	let apr: number = Number(data.apr);
 	let term: number = Number(data.term);
