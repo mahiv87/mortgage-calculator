@@ -4,15 +4,26 @@ import 'console.table';
 
 import exportScheduleToExcel from './utils/exportService.js';
 
-// interface for Inquirer prompt response
+// Interfaces
 interface MortgageResponse {
 	principal: string;
 	apr: string;
 	term: string;
 }
 
+interface InquirerPrompts {
+	type: string;
+	name: string;
+	message: string;
+}
+
+interface PaymentSchedule {
+	PAYMENT: string;
+	BALANCE: string;
+}
+
 // Array of questions for Inquirer prompt
-const questions = [
+const questions: InquirerPrompts[] = [
 	{
 		type: 'input',
 		name: 'principal',
@@ -31,7 +42,7 @@ const questions = [
 ];
 
 // Exports payment schedule to a spreadsheet file
-const excelExport = (exportData: { PAYMENT: string; BALANCE: string }[]) => {
+const excelExport = (exportData: PaymentSchedule[]) => {
 	const workSheetColumnNames = ['PAYMENT', 'BALANCE'];
 	const workSheetName = 'Payment Schedule';
 	const filePath = './payment-schedule.xlsx';
@@ -68,8 +79,8 @@ const paymentSchedule = (data: MortgageResponse): string => {
 	let term: number = Number(data.term);
 
 	// Array to hold payment schedule data
-	let schedule: { PAYMENT: string; BALANCE: string }[] = [];
-	let exportData: { PAYMENT: string; BALANCE: string }[] = [];
+	let schedule: PaymentSchedule[] = [];
+	let exportData: PaymentSchedule[] = [];
 
 	console.log('====================================');
 	console.log(chalk.cyan('PAYMENT SCHEDULE'));
