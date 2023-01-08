@@ -25,6 +25,7 @@ A simple CLI app to calculate a mortgage, and payment schedule.
 - Node.js
 - Inquirer
 - Chalk
+- XLSX
 
 ## Installation
 

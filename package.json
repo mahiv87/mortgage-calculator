@@ -2,7 +2,7 @@
 	"name": "mortgage-calculator",
 	"version": "1.0.0",
 	"type": "module",
-	"description": "",
+	"description": "CLI app to calculate mortgage",
 	"main": "index.js",
 	"scripts": {
 		"start": "cd dist && node index.js"
