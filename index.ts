@@ -30,6 +30,7 @@ const questions = [
 	}
 ];
 
+// Exports payment schedule to a spreadsheet file
 const excelExport = (exportData: { PAYMENT: string; BALANCE: string }[]) => {
 	const workSheetColumnNames = ['PAYMENT', 'BALANCE'];
 	const workSheetName = 'Payment Schedule';
@@ -88,6 +89,7 @@ const paymentSchedule = async (data: MortgageResponse) => {
 	// Format payment schedule into a table
 	console.table([...schedule]);
 
+	// Send payment schedule for export
 	excelExport(exportData);
 	return `Payment Schedule`;
 };
