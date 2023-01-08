@@ -2,6 +2,8 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 import 'console.table';
 
+import exportScheduleToExcel from './utils/exportService.js';
+
 // interface for Inquirer prompt response
 interface MortgageResponse {
 	principal: string;
@@ -28,6 +30,19 @@ const questions = [
 	}
 ];
 
+const excelExport = (exportData: { PAYMENT: string; BALANCE: string }[]) => {
+	const workSheetColumnNames = ['PAYMENT', 'BALANCE'];
+	const workSheetName = 'Payment Schedule';
+	const filePath = './payment-schedule.xlsx';
+
+	exportScheduleToExcel(
+		exportData,
+		workSheetColumnNames,
+		workSheetName,
+		filePath
+	);
+};
+
 // Calculate the remaining balance
 const calculateBalance = (
 	principal: number,
@@ -46,13 +61,14 @@ const calculateBalance = (
 };
 
 // Displays payment schedule
-const paymentSchedule = (data: MortgageResponse): string => {
+const paymentSchedule = async (data: MortgageResponse) => {
 	let principal: number = Number(data.principal);
 	let apr: number = Number(data.apr);
 	let term: number = Number(data.term);
 
 	// Array to hold payment schedule data
 	let schedule: { PAYMENT: string; BALANCE: string }[] = [];
+	let exportData: { PAYMENT: string; BALANCE: string }[] = [];
 
 	console.log('====================================');
 	console.log(chalk.cyan('PAYMENT SCHEDULE'));
@@ -63,10 +79,16 @@ const paymentSchedule = (data: MortgageResponse): string => {
 			PAYMENT: `${i}/${term * 12}`,
 			BALANCE: chalk.green(`$${balance.toFixed(2)}`)
 		});
+		exportData.push({
+			PAYMENT: `${i}/${term * 12}`,
+			BALANCE: `$${balance.toFixed(2)}`
+		});
 	}
 
 	// Format payment schedule into a table
 	console.table([...schedule]);
+
+	excelExport(exportData);
 	return `Payment Schedule`;
 };
 
