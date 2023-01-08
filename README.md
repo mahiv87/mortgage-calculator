@@ -32,7 +32,7 @@ Simply clone the repository. Navigate to the root directory, and run `npm instal
 
 ## Usage
 
-Run `npm run start` in the terminal to start the app. Then answer the prompts about the loan
+Run `npm run start` in the terminal to start the app. Then answer the prompts about the loan. The monthly payment, and payment schedule will be displayed in the terminal. The payment schedule will also be exported as a spreadsheet file.
 
 ## License
 
